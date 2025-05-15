@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Brand Details</title>
+    <link rel="stylesheet" href="../css/car-details.css">
+</head>
+<body>
+    <div class="details-container">
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">←</button>
+
+        <!-- Car Image -->
+        <img id="car-image" src="" alt="Car Image" class="car-img">
+
+        <!-- Car Brand Name & Pronunciation -->
+        <h1 id="car-name">Car Brand</h1>
+        <p id="phonetic-text">/phonetic/</p>
+        <button class="sound-btn" onclick="playPronunciation()">🔊</button>
+
+        <!-- Car History Section -->
+        <div class="car-history">
+            <h2>Brand History</h2>
+            <p id="car-history-text">Loading...</p>
+        </div>
+
+        <!-- Search for More Button -->
+        <button class="search-more-btn" onclick="searchMore()">🔍 Search for More</button>
+    </div>
+
+    <audio id="pronunciation-sound" src="../assets/default-pronunciation.mp3"></audio>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function searchMore() {
+            window.location.href = "search.html";
+        }
+
+        function playPronunciation() {
+            document.getElementById("pronunciation-sound").play();
+        }
+
+        // Simulated car data (temporary database-like structure)
+        const carData = {
+            "Lamborghini": {
+                name: "Lamborghini",
+                phonetic: "/læmˈbɔːrɡɪni/",
+                image: "../assets/lamborghini.jpeg",
+                history: "Founded in 1963 by Ferruccio Lamborghini. Known for high-performance sports cars, originally designed to compete with Ferrari. Models include the Miura, Countach, Diablo, and Aventador."
+            },
+            "Ferrari": {
+                name: "Ferrari",
+                phonetic: "/fəˈrɑːri/",
+                image: "../assets/ferrari.jpeg",
+                history: "Founded by Enzo Ferrari in 1939. Famous for luxury sports cars and racing heritage in Formula 1. Iconic models include the LaFerrari, 488 GTB, and F40."
+            }
+        };
+
+        // Get the brand from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const brand = urlParams.get("brand");
+
+        if (brand && carData[brand]) {
+            document.getElementById("car-name").innerText = carData[brand].name;
+            document.getElementById("phonetic-text").innerText = carData[brand].phonetic;
+            document.getElementById("car-history-text").innerText = carData[brand].history;
+            document.getElementById("car-image").src = carData[brand].image;
+        } else {
+            document.getElementById("car-name").innerText = "Unknown Car Brand";
+            document.getElementById("phonetic-text").innerText = "N/A";
+            document.getElementById("car-history-text").innerText = "No details available.";
+            document.getElementById("car-image").src = "../assets/default-car.png";
+        }
+    </script>
+</body>
+</html>

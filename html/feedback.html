@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | CarBrand AI</title>
+    <link rel="stylesheet" href="../css/feedback.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For the Soundwave Graph -->
+</head>
+<body>
+    <div class="feedback-container">
+        <!-- Title -->
+        <h1 class="correct-label">✅ CORRECT PRONUNCIATION</h1>
+
+        <!-- Accuracy Score -->
+        <div class="accuracy-box">
+            <h2>Accuracy: <span id="accuracy-score">95%</span></h2>
+        </div>
+
+        <!-- Pronunciation Breakdown -->
+        <div class="breakdown-box">
+            <h2>Phoneme Breakdown</h2>
+            <p id="phoneme-breakdown">pro - nun - ci - a - tion</p>
+        </div>
+
+        <!-- Soundwave Graph -->
+        <div class="graph-box">
+            <h2>Pronunciation Soundwave</h2>
+            <canvas id="soundwaveChart"></canvas>
+        </div>
+
+        <!-- View Car Details Button -->
+        <button class="view-car-btn" onclick="viewCarDetails()">🚗 View Car Details</button>
+
+        <!-- Retry Button -->
+        <button class="retry-btn" onclick="retryPronunciation()">🔄 Try Again</button>
+    </div>
+
+    <script>
+        function retryPronunciation() {
+            window.location.href = "search.html"; // Redirect back to search page
+        }
+
+        function viewCarDetails() {
+            let recognizedCarBrand = "Lamborghini"; 
+            window.location.href = `car-details.html?brand=${encodeURIComponent(recognizedCarBrand)}`;
+        }
+
+        // Generate Soundwave Graph
+        const ctx = document.getElementById('soundwaveChart').getContext('2d');
+        const soundwaveChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["0s", "0.5s", "1s", "1.5s", "2s", "2.5s", "3s"],
+                datasets: [
+                    {
+                        label: 'User Pronunciation',
+                        borderColor: '#ff9800',
+                        data: [0, 2, 1, 3, 2, 4, 2], // Simulated wave
+                        borderWidth: 2,
+                        fill: false
+                    },
+                    {
+                        label: 'Correct Pronunciation',
+                        borderColor: '#00ff00',
+                        data: [0, 1.5, 1, 2.5, 2, 3.5, 2], // Simulated correct wave
+                        borderWidth: 2,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

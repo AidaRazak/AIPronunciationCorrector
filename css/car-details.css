@@ -1,0 +1,116 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background Styling */
+.details-container {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.9), black);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Car Image with Zoom Effect */
+.car-img {
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Zoom Effect on Hover */
+.car-img:hover {
+    transform: scale(1.1);
+}
+
+/* Car Brand Name */
+#car-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Phonetic Text */
+#phonetic-text {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* Pronunciation Sound Button */
+.sound-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Car History Section with Fade-in Effect */
+.car-history {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search for More Button */
+.search-more-btn {
+    background-color: #ff9800;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover and Click Effects */
+.search-more-btn:hover {
+    box-shadow: 0px 0px 15px rgba(255, 152, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.search-more-btn:active {
+    transform: scale(0.9);
+}

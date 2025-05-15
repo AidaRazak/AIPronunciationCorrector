@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CarBrand AI</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="top-section">
+            <div class="welcome">WELCOME, <span id="username">FARAHIYA</span></div>
+            <div class="streak-badge" onclick="goToStreak()">🔥 <span>7 Streaks</span></div>
+        </div>
+
+        <!-- Search Brands Section -->
+<div class="search-brands">
+    <h3>SEARCH BRANDS</h3>
+    <button class="btn" onclick="goToSearch()">Go Find It!</button>
+</div>
+
+        <!-- Game Box Section (With Swipe Detection) -->
+<div class="game-box" id="gameBox">
+    <h3>Up for a game?</h3>
+    <p>Swipe to Start</p>
+    <button class="btn swipe-btn">→</button>
+</div>
+
+       <!-- Score Section -->
+<div class="score-section">
+    <h1>65</h1>
+    <p>Current Score</p>
+    <div class="score-indicator">
+        <span class="dot green"></span>
+        <span class="dot yellow"></span>
+        <span class="dot red"></span>
+    </div>
+    <p>Your Pronunciation Buddy</p>
+</div>
+
+<script>
+    let startX = 0;
+    let endX = 0;
+    const gameBox = document.getElementById("gameBox");
+
+    // Detect touch start
+    gameBox.addEventListener("touchstart", (event) => {
+        startX = event.touches[0].clientX;
+    });
+
+    // Detect touch move
+    gameBox.addEventListener("touchmove", (event) => {
+        endX = event.touches[0].clientX;
+    });
+
+    // Detect swipe and navigate
+    gameBox.addEventListener("touchend", () => {
+        if (startX - endX > 50) { // If user swiped left
+            window.location.href = "game.html"; // Navigate to game page
+        }
+    });
+</script>
+
+<script>
+    function goToSearch() {
+        window.location.href = "search.html"; // Redirects to the search page
+    }
+
+    function goToStreak() {
+            window.location.href = "streak.html"; // Redirects to the streak page
+        }
+        
+</script>
+
+    <script>
+        document.querySelector(".swipe-btn").addEventListener("click", function() {
+            window.location.href = "game.html";
+        });
+    </script>
+</body>
+</html>

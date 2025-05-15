@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search | CarBrand AI</title>
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+    <div class="search-container">
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">←</button>
+
+        <!-- Car Logo -->
+        <img src="../assets/car-logo.png" alt="Car Logo" class="car-logo">
+
+       <!-- Search Bar -->
+       <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button class="search-btn" onclick="searchCar()">🔍</button>
+    </div>
+
+        <!-- Microphone Button (Say the Word) -->
+        <button class="mic-btn" id="micButton" onclick="activateMic()">🎤 Say the Word</button>
+
+        <!-- Loading Animation (Hidden by Default) -->
+        <div class="loading-spinner" id="loadingSpinner"></div>
+    </div>
+
+    <audio id="micSound" src="../assets/mic-activate.mp3"></audio>
+
+    <script>
+        function goBack() {
+    window.location.href = "dashboard.html"; 
+}
+
+    
+        function activateMic() {
+            let micButton = document.getElementById("micButton");
+            let carLogo = document.querySelector(".car-logo");
+            let micSound = document.getElementById("micSound");
+            let loadingSpinner = document.getElementById("loadingSpinner");
+    
+            // Play Sound Feedback
+            micSound.play();
+    
+            // Add animation effect
+            micButton.classList.add("pulse");
+            carLogo.classList.add("zoom-in");
+            carLogo.classList.add("glow");
+            loadingSpinner.style.display = "block"; // Show loading animation
+    
+            // Simulated AI Processing - Randomly choose correct or incorrect
+            setTimeout(() => {
+                micButton.classList.remove("pulse");
+                carLogo.classList.remove("zoom-in");
+                carLogo.classList.remove("glow");
+                loadingSpinner.style.display = "none"; // Hide loading animation
+    
+                let isCorrect = Math.random() < 0.5; // 50% chance correct or incorrect
+                if (isCorrect) {
+                    window.location.href = "feedback.html"; // Redirect to correct pronunciation page
+                } else {
+                    window.location.href = "incorrect.html"; // Redirect to incorrect pronunciation page
+                }
+            }, 2000);
+        }
+
+        function searchCar() {
+            let searchValue = document.getElementById("searchInput").value.trim();
+            if (searchValue) {
+                window.location.href = `car-details.html?brand=${encodeURIComponent(searchValue)}`;
+            } else {
+                alert("Please enter a car brand name.");
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

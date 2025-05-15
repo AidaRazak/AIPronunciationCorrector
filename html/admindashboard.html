@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #1E1E2F;
+            color: white;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #161625;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #252545;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li:hover {
+            background: #40406b;
+        }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 24px;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            background: #252545;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .stat-box p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li onclick="location.href='admindashboard.html'">Dashboard</li>
+            <li onclick="location.href='managedataset.html'">Manage Dataset</li>
+            <li onclick="location.href='updatefeatures.html'">Update Features</li>
+            <li onclick="location.href='logs.html'">View Logs</li>
+            <li onclick="location.href='users.html'">User Management</li>
+            <li onclick="location.href='login.html'">Logout</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome, Admin</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>Total Users</h3>
+                <p>120</p>
+            </div>
+            <div class="stat-box">
+                <h3>Active Streaks</h3>
+                <p>80</p>
+            </div>
+            <div class="stat-box">
+                <h3>Dataset Entries</h3>
+                <p>250</p>
+            </div>
+            <div class="stat-box">
+                <h3>Recent Logs</h3>
+                <p>15 Errors, 120 Requests</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

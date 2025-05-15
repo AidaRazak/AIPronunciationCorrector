@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Incorrect Pronunciation</title>
+    <link rel="stylesheet" href="../css/incorrect.css">
+</head>
+<body>
+    <div class="feedback-container">
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">←</button>
+
+        <!-- Incorrect Label -->
+        <h1 class="incorrect-label">❌ INCORRECT PRONUNCIATION!!</h1>
+
+        <!-- "Did You Mean?" Suggestions -->
+        <div class="suggestions-box">
+            <h2 class="suggestions-title">DO YOU MEAN...</h2>
+            <button class="suggestion-btn" onclick="retryWithWord('Bugatti')">Bugatti (/buˈɡɑːti/ or /buˈɡɒti/)</button>
+            <button class="suggestion-btn" onclick="retryWithWord('Maserati')">Maserati (/ˌmɑːzəˈrɑːti/)</button>
+            <button class="suggestion-btn" onclick="retryWithWord('Pagani')">Pagani (/pəˈɡɑːni/)</button>
+            <button class="suggestion-btn" onclick="retryWithWord('Ferrari')">Ferrari (/fəˈrɑːri/)</button>
+        </div>
+
+        <!-- Search for More Button -->
+        <button class="search-more-btn" onclick="searchMore()">🔍 Search for More</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function retryWithWord(word) {
+            alert("Retrying pronunciation for: " + word);
+            window.location.href = "search.html"; // Redirect to retry
+        }
+
+        function searchMore() {
+            window.location.href = "search.html"; // Redirect to search page for more words
+        }
+    </script>
+</body>
+</html>

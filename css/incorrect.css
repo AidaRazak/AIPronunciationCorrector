@@ -1,0 +1,110 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background Styling */
+.feedback-container {
+    background: radial-gradient(circle, rgba(50, 0, 0, 0.9), black);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Incorrect Pronunciation Label */
+.incorrect-label {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff3333;
+    text-shadow: 0px 0px 15px rgba(255, 0, 0, 0.7);
+    animation: shakeEffect 0.5s infinite alternate;
+}
+
+/* Shake Effect */
+@keyframes shakeEffect {
+    0% { transform: translateX(-3px); }
+    100% { transform: translateX(3px); }
+}
+
+/* "Did You Mean?" Box */
+.suggestions-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+}
+
+/* Suggestions Title */
+.suggestions-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+    margin-bottom: 15px;
+}
+
+/* Suggestion Buttons */
+.suggestion-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* Suggestion Button Hover Effect */
+.suggestion-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Search for More Button */
+.search-more-btn {
+    background-color: #ff9800;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover and Click Effects */
+.search-more-btn:hover {
+    box-shadow: 0px 0px 15px rgba(255, 152, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.search-more-btn:active {
+    transform: scale(0.9);
+}

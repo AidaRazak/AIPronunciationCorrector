@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streak | CarBrand AI</title>
+    <link rel="stylesheet" href="../css/streak.css">
+</head>
+<body>
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+
+    <div class="streak-container">
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">←</button>
+
+        <!-- Streak Badge -->
+        <div class="streak-badge">
+            <div class="fire-icon">🔥</div>
+            <div class="streak-number">7</div>
+            <p class="streak-text">Days Streak</p>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar">
+            <div class="calendar-header">
+                <p id="month-year"></p>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "dashboard.html";
+        }
+
+        function generateCalendar() {
+            const grid = document.getElementById("calendar-grid");
+            const monthYear = document.getElementById("month-year");
+
+            let today = new Date();
+            let month = today.getMonth();
+            let year = today.getFullYear();
+            let daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            monthYear.innerText = today.toLocaleString('default', { month: 'long' }) + " " + year;
+
+            let streakDays = [1, 4, 8, 11, 15, 22, 25]; // Example streak days (Change dynamically)
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                let dayElement = document.createElement("div");
+                dayElement.classList.add("calendar-day");
+                dayElement.innerText = day;
+
+                if (streakDays.includes(day)) {
+                    dayElement.classList.add("streak-day"); // Highlight active streaks
+                }
+
+                grid.appendChild(dayElement);
+            }
+        }
+
+        window.onload = generateCalendar;
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Brand | CarBrand AI</title>
+    <link rel="stylesheet" href="../css/game.css">
+</head>
+<body>
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+
+    <div class="game-container">
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">←</button>
+
+        <!-- Score & Progress -->
+        <div class="game-header">
+            <p class="progress-text">Challenge <span id="challenge-number">1</span></p>
+            <p class="score-text">Score: <span id="score-counter">0</span></p>
+        </div>
+
+        <!-- Game Content -->
+        <div id="game-content">
+            <!-- Dynamic game type will load here -->
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <button class="submit-btn floating-btn" onclick="checkAnswer()">✔ Submit Guess</button>
+            <button class="skip-btn" onclick="loadNewChallenge()">⏭ Skip</button>
+        </div>
+    </div>
+
+    <audio id="correct-sound" src="../assets/correct.mp3"></audio>
+    <audio id="wrong-sound" src="../assets/wrong.mp3"></audio>
+    <audio id="milestone-sound" src="../assets/milestone.mp3"></audio>
+
+    <script>
+        let correctAnswer = "";
+        let score = 0;
+        let challengeNumber = 1;
+
+        const challenges = [
+            { type: "text", question: "This brand is known for 'The Ultimate Driving Machine.'", answer: "BMW" },
+            { type: "audio", question: "audio-bmw.mp3", answer: "BMW" },
+            { type: "image", question: "../assets/audi.jpeg", answer: "Audi" },
+            { type: "text", question: "This car brand has a four-ring logo.", answer: "Audi" }
+        ];
+
+        function loadNewChallenge() {
+            let gameContent = document.getElementById("game-content");
+            let randomChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+            correctAnswer = randomChallenge.answer;
+            document.getElementById("challenge-number").innerText = challengeNumber;
+
+            if (randomChallenge.type === "text") {
+                gameContent.innerHTML = `
+                    <h2 class="game-title">GUESS THE BRAND</h2>
+                    <p class="game-clue">"${randomChallenge.question}"</p>
+                    <input type="text" id="userGuess" placeholder="Enter your guess..." class="guess-input">
+                `;
+            } else if (randomChallenge.type === "audio") {
+                gameContent.innerHTML = `
+                    <h2 class="game-title">GUESS THE BRAND</h2>
+                    <audio controls>
+                        <source src="../assets/${randomChallenge.question}" type="audio/mp3">
+                    </audio>
+                    <input type="text" id="userGuess" placeholder="Enter your guess..." class="guess-input">
+                `;
+            } else if (randomChallenge.type === "image") {
+                gameContent.innerHTML = `
+                    <h2 class="game-title">GUESS THE BRAND</h2>
+                    <img src="${randomChallenge.question}" alt="Car Image" class="game-image">
+                    <input type="text" id="userGuess" placeholder="Enter your guess..." class="guess-input">
+                `;
+            }
+
+            challengeNumber++;
+        }
+
+        function checkAnswer() {
+            let userGuess = document.getElementById("userGuess").value.trim().toLowerCase();
+            let submitBtn = document.querySelector(".submit-btn");
+
+            if (userGuess === correctAnswer.toLowerCase()) {
+                score++;
+                document.getElementById("score-counter").innerText = score;
+                submitBtn.classList.add("correct-glow");
+                document.getElementById("correct-sound").play();
+                
+                if (score % 5 === 0) {
+                    document.getElementById("milestone-sound").play();
+                    alert("🎉 Milestone Reached: 5 Correct Answers!");
+                }
+
+                // Auto-advance to next challenge after 1 second
+                setTimeout(() => {
+                    submitBtn.classList.remove("correct-glow");
+                    loadNewChallenge();
+                }, 1000);
+            } else {
+                submitBtn.classList.add("wrong-shake");
+                document.getElementById("wrong-sound").play();
+
+                setTimeout(() => {
+                    submitBtn.classList.remove("wrong-shake");
+                }, 500);
+            }
+        }
+
+        function goBack() {
+            window.location.href = "dashboard.html";
+        }
+
+        window.onload = loadNewChallenge;
+    </script>
+</body>
+</html>

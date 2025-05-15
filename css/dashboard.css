@@ -1,0 +1,187 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Dashboard Background with Blur and Red Tint */
+.dashboard-container {
+    background: url("../assets/dashboardcar.jpg") no-repeat center center/cover;
+    position: relative;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+.dashboard-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(150, 0, 0, 0.4); /* Red tint effect */
+    filter: blur(5px); /* Blur effect for the background */
+    z-index: -1;
+}
+
+/* Top Section: Welcome and Streak Badge */
+.top-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.top-section .welcome {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.top-section .streak-badge {
+    background: #ffd700;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Search Brands Section */
+.search-brands {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    margin-top: 70px; /* Slightly lowered */
+}
+
+.search-brands h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.search-brands .btn {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Game Box Section */
+.game-box {
+    background: rgba(25, 0, 0, 0.855);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    margin-top: 70px; /* Slightly lowered */
+}
+
+.game-box h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.game-box p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.game-box .btn {
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: white;
+    color: black;
+    font-weight: bold;
+}
+
+/* Score Section (Fixed at the Bottom) */
+.score-section {
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0px -4px 10px rgba(255, 0, 0, 0.3);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Enlarged and Glowing Score Number */
+.score-section h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+    animation: glowEffect 2s infinite alternate;
+}
+
+/* Score Description */
+.score-section p {
+    font-size: 16px;
+    color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Animated Glow Effect */
+@keyframes glowEffect {
+    from {
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+    to {
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+    }
+}
+
+/* Score Indicator (Traffic Light Style) */
+.score-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.green { background: #00ff00; }
+.yellow { background: #ffcc00; }
+.red { background: #ff0000; }
+
+/* Animate Dots */
+.dot:hover {
+    transform: scale(1.3);
+}

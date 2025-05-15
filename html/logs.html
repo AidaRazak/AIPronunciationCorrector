@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Logs - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #1E1E2F;
+            color: white;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #161625;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #252545;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li:hover {
+            background: #40406b;
+        }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .filter-container select {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: #252545;
+            color: white;
+        }
+
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .log-table th, .log-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #40406b;
+        }
+
+        .log-table th {
+            background: #252545;
+        }
+
+        .log-table tr:hover {
+            background: #2e2e4d;
+        }
+
+        .download-btn {
+            padding: 10px 15px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .download-btn:hover {
+            background: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li onclick="location.href='admindashboard.html'">Dashboard</li>
+            <li onclick="location.href='managedataset.html'">Manage Dataset</li>
+            <li onclick="location.href='updatefeatures.html'">Update Features</li>
+            <li>View Logs</li>
+            <li onclick="location.href='users.html'">User Management</li>
+            <li onclick="location.href='login.html'">Logout</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>System Logs</h1>
+            <button class="download-btn" onclick="downloadLogs()">Download Logs</button>
+        </div>
+
+        <div class="filter-container">
+            <label for="logFilter">Filter by Type:</label>
+            <select id="logFilter" onchange="filterLogs()">
+                <option value="all">All Logs</option>
+                <option value="error">Errors</option>
+                <option value="api">API Calls</option>
+                <option value="user">User Activity</option>
+            </select>
+        </div>
+
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Event Type</th>
+                    <th>Description</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody">
+                <tr>
+                    <td>2025-02-17 14:32:10</td>
+                    <td>Error</td>
+                    <td>API response failed for pronunciation check</td>
+                    <td>System</td>
+                </tr>
+                <tr>
+                    <td>2025-02-17 14:30:05</td>
+                    <td>User Activity</td>
+                    <td>User "JohnDoe" searched for "Porsche"</td>
+                    <td>JohnDoe</td>
+                </tr>
+                <tr>
+                    <td>2025-02-17 14:25:43</td>
+                    <td>API Call</td>
+                    <td>Whisper AI processed audio input</td>
+                    <td>System</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filterLogs() {
+            let filter = document.getElementById("logFilter").value;
+            let table = document.getElementById("logTableBody");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                let type = rows[i].getElementsByTagName("td")[1].innerText.toLowerCase();
+                if (filter === "all" || type.includes(filter)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+
+        function downloadLogs() {
+            alert("Downloading system logs...");
+            // Here, you would trigger a file download (backend API required)
+        }
+    </script>
+
+</body>
+</html>

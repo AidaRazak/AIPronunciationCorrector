@@ -1,0 +1,115 @@
+/* Background Overlay */
+.background-overlay {
+    background: radial-gradient(circle at top, rgba(30, 30, 30, 0.8), rgba(10, 10, 10, 0.9));
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Streak Page Container */
+.streak-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Streak Badge */
+.streak-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fire-icon {
+    font-size: 60px;
+    animation: glowFire 1.5s infinite alternate;
+}
+
+/* Streak Glow Animation */
+@keyframes glowFire {
+    0% { text-shadow: 0 0 10px orange; }
+    100% { text-shadow: 0 0 20px red; }
+}
+
+/* Streak Number */
+.streak-number {
+    font-size: 50px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffcc00, #ff6600);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Streak Text */
+.streak-text {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Calendar */
+.calendar {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 350px;
+}
+
+.calendar-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+/* Calendar Day */
+.calendar-day {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Highlight Streak Days */
+.streak-day {
+    background: linear-gradient(90deg, #ff6600, #ffcc00);
+    color: black;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgba(255, 200, 0, 0.8);
+}
+
+/* Hover Effect */
+.calendar-day:hover {
+    transform: scale(1.1);
+}
